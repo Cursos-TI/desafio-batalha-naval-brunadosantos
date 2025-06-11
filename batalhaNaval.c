@@ -8,6 +8,8 @@
 int main() {
     // Nível Novato - Posicionamento dos Navios
     // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
+    char cabecalhoColuna[10] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
+    int cabecalhoLinha[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
     int tabuleiro[10][10] = {0};
 
     // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
@@ -28,15 +30,15 @@ int main() {
     {
         printf("Erro! Houve uma colisão");
     } else {
-        
+        printf("----- Coordenada dos navios ----- \n");
         // validação de posição no tabuleiro do navio horizontal
         if (coluna + tamanho <= 10)
         {   
             // Mostra a coordenada do navio na horizontal
-            printf("Cordenada navio na horizontal: %d, %d\n", linha, coluna);
+            printf("Coordenada navio na horizontal: %d, %d\n", linha, coluna);
             // definição da posição do navio horizontal
             for (int i = 0; i < 3; i++) {
-                tabuleiro[linha][coluna + i] = 1;
+                tabuleiro[linha][coluna + i] = 3;
             }
         } else { 
             printf("O navio não cabe no tabuleiro! Tente novamente.\n");
@@ -47,28 +49,41 @@ int main() {
         if (linha2 + tamanho <= 10)
         {
             // Mostra a coordenada do navio na vertical
-            printf("Cordenada navio na vertical: %d, %d\n", linha2, coluna2);
+            printf("Coordenada navio na vertical: %d, %d\n", linha2, coluna2);
             // definição da posição do navio na vertical
             for (int j = 0; j < 3; j++) 
             {
-                tabuleiro[linha2 + j][coluna2] = 1;
+                tabuleiro[linha2 + j][coluna2] = 3;
             }
         } else { 
             printf("O navio não cabe no tabuleiro! Tente novamente.\n");
             exit(0);
         }
-        
+        printf("\n");
+        printf("----- Tabuleiro ----- \n");
+        printf("\n");
+        printf("   ");
+
+        for (int x = 0; x < 10; x++)
+        {
+            printf("(%c)", cabecalhoColuna[x]);
+        }
+
+        printf("\n");
+
         // Exibição do tabuleiro
         for (int i = 0; i < 10; i++) 
         {
+            printf("(%d) ", cabecalhoLinha[i]);
             for (int j = 0; j < 10; j++)
             {
-                printf("[%d]", tabuleiro[i][j]);
+                printf("%d  ", tabuleiro[i][j]);
             }
             printf("\n");
         }
     }
 
+    printf("\n");
     // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
     // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
     // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
